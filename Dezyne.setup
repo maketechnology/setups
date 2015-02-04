@@ -91,7 +91,7 @@
     <setupTask
       xsi:type="setup:RedirectionTask"
       id="setup.redirect"
-      sourceURL="http://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
+      sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
       targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
         <description>
           Redirects setup from public https://github.com/maketechnology
