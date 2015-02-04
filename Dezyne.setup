@@ -81,7 +81,7 @@
       xsi:type="setup:VariableTask"
       id=""
       name="dezyne.repo.git"
-      defaultValue="git@gitlab.com:gzunino/asdgen2.git"
+      defaultValue="https://gitlab.com/gzunino/asdgen2.git"
       label="Git Repository"/>
   <setupTask
       xsi:type="setup:RedirectionTask"
