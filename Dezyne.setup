@@ -83,22 +83,22 @@
       name="dezyne.repo.git"
       defaultValue="https://gitlab.com/gzunino/asdgen2.git"
       label="Git Repository"/>
-  <setupTask
-      xsi:type="setup:RedirectionTask"
-      id="setup.redirect"
-      sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
-      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
-    <description>
-      Redirects setup from public https://github.com/maketechnology
-      to checkouted GIT repo.
-      Origin setup needs to be on public repo (Oomph fails with private)
-    </description>
-  </setupTask>
   <stream name="master">
     <setupTask
         xsi:type="git:GitCloneTask"
         location="${workspace.location}/git"
         remoteURI="${dezyne.repo.git}"/>
+    <setupTask
+      xsi:type="setup:RedirectionTask"
+      id="setup.redirect"
+      sourceURL="http://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
+      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
+        <description>
+          Redirects setup from public https://github.com/maketechnology
+          to checkouted GIT repo.
+          Origin setup needs to be on public repo (Oomph fails with private)
+        </description>
+    </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask">
       <targlet
