@@ -89,17 +89,6 @@
         location="${workspace.location}/git"
         remoteURI="${dezyne.repo.git}"/>
     <setupTask
-      xsi:type="setup:RedirectionTask"
-      id="setup.redirect"
-      sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
-      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
-        <description>
-          Redirects setup from public https://github.com/maketechnology
-          to checkouted GIT repo.
-          Origin setup needs to be on public repo (Oomph fails with private)
-        </description>
-    </setupTask>
-    <setupTask
         xsi:type="setup.targlets:TargletTask">
       <targlet
           name="AsdGen2TargetPlatform">
@@ -202,8 +191,24 @@
     <setupTask
         xsi:type="launching:LaunchTask"
         id="xtext mwe"
-        launcher="Generate Language Infrastructure (com.verum.asdgen2.asd)">
+        launcher="Generate Language Infrerastructure (com.verum.asdgen2.asd)">
       <description>Generates Xtext code</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-Doomph.redirection.dezyneSetup"
+        value="=https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup->${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup"
+        vm="true"/>
+    <setupTask
+      xsi:type="setup:RedirectionTask"
+      id="setup.redirect"
+      sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
+      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
+        <description>
+          Redirects setup from public https://github.com/maketechnology
+          to checkouted GIT repo.
+          Origin setup needs to be on public repo (Oomph fails with private)
+        </description>
     </setupTask>
   </stream>
   <logicalProjectContainer
