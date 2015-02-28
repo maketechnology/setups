@@ -15,6 +15,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
+      value="Luna"
       defaultValue="Luna"
       storageURI="scope://Workspace"
       label="Target Platform">
@@ -79,10 +80,16 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="git@@{remoteURI}:@{userID}/algotrader.git"
+        value="git@@{remoteURI}:development/algotrader.git"
         label="GIT SSH (requires pre ssh-keys)"/>
     <choice
-        value="https://@{remoteURI}/gitlab/@{userID}/algotrader.git"
+        value="https://@{remoteURI}/gitlab/development/algotrader.git"
+        label="HTTPS (with user/pass)"/>
+    <choice
+        value="git@@{remoteURI}:ssampaoli/algotrader.git"
+        label="GIT SSH (requires pre ssh-keys)"/>
+    <choice
+        value="https://@{remoteURI}/gitlab/ssampaoli/algotrader.git"
         label="HTTPS (with user/pass)"/>
   </setupTask>
   <setupTask
@@ -128,10 +135,22 @@
         versionRange="[1.1.0,2.0.0)"/>
     <requirement
         name="org.eclipse.jdt.junit.runners.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.ease.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.ease.modules.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.ease.lang.groovy.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.ease.ui.feature.feature.group"/>
     <repository
         url="http://www.jnario.org/updates/snapshot"/>
     <repository
         url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
+    <repository
+        url="http://download.eclipse.org/ease/update/release"/>
+    <repository
+        url="http://topcased-mm.gforge.enseeiht.fr/ease_groovy/updates/latest/"/>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
@@ -226,6 +245,28 @@
           name="org.eclipse.wst.common_ui.feature.feature.group"/>
       <requirement
           name="org.eclipse.wst.common.emf"/>
+      <requirement
+          name="org.eclipse.ease.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ease.modules.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ease.lang.groovy.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ease.ui.feature.feature.group"/>
+      <requirement
+          name="org.jnario.lib"/>
+      <requirement
+          name="org.eclipse.jdt.junit.runners.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.swtbot.forms.feature.group"/>
+      <requirement
+          name="org.eclipse.swtbot.eclipse.feature.group"/>
+      <requirement
+          name="org.eclipse.swtbot.feature.group"/>
+      <requirement
+          name="org.eclipse.swtbot.go"/>
+      <requirement
+          name="org.eclipse.swtbot.eclipse.spy"/>
       <sourceLocator
           rootFolder="${git.clone.location/eclipse}"/>
       <repositoryList
@@ -242,6 +283,8 @@
             url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
         <repository
             url="http://www.jnario.org/updates/snapshot"/>
+        <repository
+            url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
       </repositoryList>
       <repositoryList
           name="Luna">
@@ -257,6 +300,14 @@
             url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
         <repository
             url="http://www.jnario.org/updates/snapshot"/>
+        <repository
+            url="http://download.eclipse.org/ease/update/release"/>
+        <repository
+            url="http://topcased-mm.gforge.enseeiht.fr/ease_groovy/updates/latest/"/>
+        <repository
+            url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+        <repository
+            url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
       </repositoryList>
     </targlet>
   </setupTask>
@@ -270,8 +321,8 @@
       option="-Doomph.redirection.dezyneSetup"
       value="=https://raw.githubusercontent.com/maketechnology/setups/master/AlgoTraderPlugins.setup->${workspace.location|uri}/git/eclipse/releng/AlgoTraderPlugins.setup"
       vm="true"/>
-  <stream name="master"/>
   <stream name="feature-strategy-group"/>
+  <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
