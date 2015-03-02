@@ -333,6 +333,11 @@
       option="-Doomph.redirection.dezyneSetup"
       value="=https://raw.githubusercontent.com/maketechnology/setups/master/AlgoTraderPlugins.setup->${workspace.location|uri}/git/eclipse/releng/AlgoTraderPlugins.setup"
       vm="true"/>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Doomph.redirection.repoSetup"
+      value="=https://repo.algotrader.ch/AlgoTraderPlugins.setup->${workspace.location|uri}/git/eclipse/releng/AlgoTraderPlugins.setup"
+      vm="true"/>
   <stream name="feature-strategy-group"/>
   <stream name="master"/>
   <logicalProjectContainer
