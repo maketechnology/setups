@@ -73,8 +73,6 @@
     <repository
         url="http://eclipse-color-theme.github.io/update/"/>
     <repository
-        url="http://dl.bintray.com/vogellacompany/saneclipse/"/>
-    <repository
         url="http://download.eclipse.org/efxclipse/updates-released/1.1.0/site"/>
   </setupTask>
   <setupTask
@@ -83,6 +81,18 @@
       name="dezyne.repo.git"
       defaultValue="https://gitlab.com/gzunino/asdgen2.git"
       label="Git Repository"/>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Preferences">
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.oomph.setup.ui">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
+          value="true"/>
+    </setupTask>
+  </setupTask>
   <stream name="master">
     <setupTask
         xsi:type="git:GitCloneTask"
@@ -91,7 +101,7 @@
     <setupTask
         xsi:type="setup.targlets:TargletTask">
       <targlet
-          name="AsdGen2TargetPlatform">
+          name="DezyneTargetPlatform">
         <requirement
             name="org.eclipse.platform.feature.group"/>
         <requirement
@@ -135,8 +145,6 @@
         <requirement
             name="com.google.gson"/>
         <requirement
-            name="org.restlet"/>
-        <requirement
             name="org.jnario.lib"
             versionRange="[1.1.0,2.0.0)"/>
         <requirement
@@ -160,6 +168,8 @@
             name="org.hamcrest.library"/>
         <requirement
             name="org.eclipselabs.xtext.utils.unittesting.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.nebula.widgets.paperclips.feature.feature.group"/>
         <sourceLocator
             rootFolder="${workspace.location}/git/">
           <predicate
@@ -185,13 +195,15 @@
               url="http://xtext-utils.eclipselabs.org.codespot.com/git.distribution/releases/unittesting-0.9.x"/>
           <repository
               url="http://download.eclipse.org/efxclipse/runtime-released/1.1.0/site"/>
+          <repository
+              url="http://download.eclipse.org/technology/nebula/archives/Q12015/release/"/>
         </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
         xsi:type="launching:LaunchTask"
         id="xtext mwe"
-        launcher="Generate Language Infrerastructure (com.verum.asdgen2.asd)">
+        launcher="/com.verum.asdgen2.asd/.launch/Generate Language Infrastructure (com.verum.asdgen2.asd).launch">
       <description>Generates Xtext code</description>
     </setupTask>
     <setupTask
@@ -200,15 +212,16 @@
         value="=https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup->${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup"
         vm="true"/>
     <setupTask
-      xsi:type="setup:RedirectionTask"
-      id="setup.redirect"
-      sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
-      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
-        <description>
-          Redirects setup from public https://github.com/maketechnology
-          to checkouted GIT repo.
-          Origin setup needs to be on public repo (Oomph fails with private)
-        </description>
+        xsi:type="setup:RedirectionTask"
+        id="setup.redirect"
+        disabled="true"
+        sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
+        targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
+      <description>
+        Redirects setup from public https://github.com/maketechnology
+        to checkouted GIT repo.
+        Origin setup needs to be on public repo (Oomph fails with private)
+      </description>
     </setupTask>
   </stream>
   <logicalProjectContainer
