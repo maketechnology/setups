@@ -82,17 +82,17 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="git@@{remoteURI}:development/algotrader.git"
+        value="git@@{remoteURI}:gzunino/algotrader.git"
+        label="gzunino GIT SSH (requires pre ssh-keys)"/>
+    <choice
+        value="https://@{remoteURI}/gzunino/algotrader.git"
+        label="gzunino HTTPS (with user/pass)"/>
+    <choice
+        value="git@@{remoteURI}:development/eclipseclient.git"
         label="development GIT SSH (requires pre ssh-keys)"/>
     <choice
-        value="https://@{remoteURI}/gitlab/development/algotrader.git"
+        value="https://@{remoteURI}/gitlab/development/eclipseclient.git"
         label="development HTTPS (with user/pass)"/>
-    <choice
-        value="git@@{remoteURI}:ssampaoli/algotrader.git"
-        label="ssampaoli GIT SSH (requires pre ssh-keys)"/>
-    <choice
-        value="https://@{remoteURI}/gitlab/ssampaoli/algotrader.git"
-        label="ssampaoli HTTPS (with user/pass)"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -338,6 +338,50 @@
       option="-Doomph.redirection.repoSetup"
       value="=https://repo.algotrader.ch/AlgoTraderPlugins.setup->${workspace.location|uri}/git/eclipse/releng/AlgoTraderPlugins.setup"
       vm="true"/>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="User Preferences">
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.core.resources">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.core.resources/encoding"
+          value="UTF-8"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.egit.core">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.egit.core/core_autoIgnoreDerivedResources"
+          value="false"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.jdt.ui">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates"
+          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&lt;templates>&lt;template autoinsert=&quot;false&quot; context=&quot;filecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created Java files&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.filecomment&quot; name=&quot;filecomment&quot;>/***********************************************************************************&#xA; * AlgoTrader Enterprise Trading Framework&#xA; *&#xA; * Copyright (C) 2014 AlgoTrader GmbH - All rights reserved&#xA; *&#xA; * All information contained herein is, and remains the property of AlgoTrader GmbH.&#xA; * The intellectual and technical concepts contained herein are proprietary to&#xA; * AlgoTrader GmbH. Modification, translation, reverse engineering, decompilation,&#xA; * disassembly or reproduction of this material is strictly forbidden unless prior&#xA; * written permission is obtained from AlgoTrader GmbH&#xA; *&#xA; * Fur detailed terms and conditions consult the file LICENSE.txt or contact&#xA; *&#xA; * AlgoTrader GmbH&#xA; * Badenerstrasse 16&#xA; * 8004 Zurich&#xA; ***********************************************************************************/&lt;/template>&lt;/templates>"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.oomph.setup.ui">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
+          value="true"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.xtend.core.Xtend">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.xtend.core.Xtend/outlet.DEFAULT_OUTPUT.cleanDirectory"
+          value="true"/>
+    </setupTask>
+  </setupTask>
   <stream name="feature-strategy-group"/>
   <stream name="master"/>
   <logicalProjectContainer
