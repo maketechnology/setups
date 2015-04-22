@@ -189,7 +189,7 @@
         name="AlgoTrader">
       <predicate
           xsi:type="predicates:NamePredicate"
-          pattern=".*algotrader.*"/>
+          pattern=".*"/>
     </workingSet>
   </setupTask>
   <setupTask
@@ -382,7 +382,6 @@
           value="true"/>
     </setupTask>
   </setupTask>
-  <stream name="feature-strategy-group"/>
   <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
