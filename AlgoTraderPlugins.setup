@@ -181,7 +181,7 @@
       id=""
       projectNameTemplate="">
     <sourceLocator
-        rootFolder="${git.clone.location/eclipse}"/>
+        rootFolder="${git.clone.location}"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
@@ -201,7 +201,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.location/eclipse/releng/ch.algotrader.releng.target}</value>
+          <value>${git.clone.location/releng/ch.algotrader.releng.target}</value>
         </detail>
         <detail
             key="includeAllPlatforms">
@@ -279,7 +279,7 @@
       <requirement
           name="org.eclipse.swtbot.eclipse.spy"/>
       <sourceLocator
-          rootFolder="${git.clone.location/eclipse}"/>
+          rootFolder="${git.clone.location}"/>
       <repositoryList
           name="Mars">
         <repository
@@ -331,12 +331,12 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.dezyneSetup"
-      value="=https://raw.githubusercontent.com/maketechnology/setups/master/AlgoTraderPlugins.setup->${workspace.location|uri}/git/eclipse/releng/AlgoTraderPlugins.setup"
+      value="=https://raw.githubusercontent.com/maketechnology/setups/master/AlgoTraderPlugins.setup->${workspace.location|uri}/git/releng/AlgoTraderPlugins.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.repoSetup"
-      value="=https://repo.algotrader.ch/AlgoTraderPlugins.setup->${workspace.location|uri}/git/eclipse/releng/AlgoTraderPlugins.setup"
+      value="=https://repo.algotrader.ch/AlgoTraderPlugins.setup->${workspace.location|uri}/git/releng/AlgoTraderPlugins.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup:CompoundTask"
