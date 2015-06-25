@@ -185,7 +185,7 @@
         <requirement
             name="org.eclipse.jgit.feature.group"/>
         <sourceLocator
-            rootFolder="${git.path|file}">
+            rootFolder="${git.path}">
           <predicate
               xsi:type="predicates:NamePredicate"
               pattern=".*"/>
@@ -253,28 +253,28 @@
         name="Preferences">
       <setupTask
           xsi:type="setup:CompoundTask"
-        name="org.eclipse.emf.ecore.xcore.Xcore">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.emf.ecore.xcore.Xcore/outlet.DEFAULT_OUTPUT.cleanupDerived"
-          value="false"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.emf.ecore.xcore.Xcore/outlet.DEFAULT_OUTPUT.derived"
-          value="false"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="org.eclipse.egit.core">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          id="disableDerivedGitIgnore"
-          key="/instance/org.eclipse.egit.core/core_autoIgnoreDerivedResources"
-          value="false">
-        <description>See https://www.eclipse.org/forums/index.php/mv/msg/499431/1080042/#msg_1080042</description>
+          name="org.eclipse.emf.ecore.xcore.Xcore">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.emf.ecore.xcore.Xcore/outlet.DEFAULT_OUTPUT.cleanupDerived"
+            value="false"/>
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.emf.ecore.xcore.Xcore/outlet.DEFAULT_OUTPUT.derived"
+            value="false"/>
       </setupTask>
-    </setupTask>
-    <setupTask
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          name="org.eclipse.egit.core">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            id="disableDerivedGitIgnore"
+            key="/instance/org.eclipse.egit.core/core_autoIgnoreDerivedResources"
+            value="false">
+          <description>See https://www.eclipse.org/forums/index.php/mv/msg/499431/1080042/#msg_1080042</description>
+        </setupTask>
+      </setupTask>
+      <setupTask
           xsi:type="setup:CompoundTask"
           name="org.eclipse.core.resources">
         <setupTask
