@@ -67,7 +67,7 @@
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/maintenance/R201409160908/"/>
     <repository
-        url="http://download.eclipse.org/sirius/updates/releases/1.0.1/luna"/>
+        url="http://download.eclipse.org/sirius/updates/releases/3.0.0/mars"/>
     <repository
         url="http://download.eclipse.org/ecp/releases/releases_15"/>
     <repository
@@ -208,7 +208,7 @@
           <repository
               url="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
           <repository
-              url="http://download.eclipse.org/sirius/updates/releases/1.0.1/luna"/>
+              url="http://download.eclipse.org/sirius/updates/releases/3.0.0/mars"/>
           <repository
               url="http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2014-05"/>
           <repository
