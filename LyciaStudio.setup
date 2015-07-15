@@ -67,13 +67,6 @@
     <description>Choose the compatibly level of the target platform</description>
   </setupTask>
   <setupTask
-      xsi:type="setup:EclipseIniTask"
-      option="-Xmx"
-      value="2048m"
-      vm="true">
-    <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
-  </setupTask>
-  <setupTask
       xsi:type="setup:VariableTask"
       name="bitbucket.git.remoteURIs"
       label="Eclipse Git Repository">

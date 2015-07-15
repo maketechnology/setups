@@ -29,8 +29,6 @@
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
     <requirement
-        name="com.tetrade.eclipse.plugins.easyshell.feature.feature.group"/>
-    <requirement
         name="org.eclipse.sirius.doc.feature.feature.group"/>
     <requirement
         name="org.eclipse.sirius.samples.feature.group"/>
@@ -55,17 +53,17 @@
     <requirement
         name="net.jeeeyul.eclipse.themes.feature.feature.group"/>
     <repository
-        url="http://download.eclipse.org/releases/luna"/>
+        url="http://download.eclipse.org/releases/mars"/>
     <repository
-        url="http://download.eclipse.org/eclipse/updates/4.4"/>
+        url="http://download.eclipse.org/eclipse/updates/4.5"/>
     <repository
-        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository"/>
     <repository
-        url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.8.0/N/LATEST/"/>
+        url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST/"/>
     <repository
         url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201405280027/"/>
     <repository
-        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/maintenance/R201409160908/"/>
+        url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
     <repository
         url="http://download.eclipse.org/sirius/updates/releases/3.0.0/mars"/>
     <repository
@@ -80,8 +78,6 @@
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest/"/>
     <repository
         url="http://feeling.sourceforge.net/update"/>
-    <repository
-        url="http://pluginbox.sourceforge.net"/>
     <repository
         url="http://eclipse.jeeeyul.net/update/"/>
     <repository
@@ -210,7 +206,7 @@
           <repository
               url="http://download.eclipse.org/sirius/updates/releases/3.0.0/mars"/>
           <repository
-              url="http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2014-05"/>
+              url="http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2015-06"/>
           <repository
               url="http://www.jnario.org/updates/snapshot"/>
           <repository
