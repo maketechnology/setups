@@ -208,10 +208,10 @@
           name="com.querix.dbt.ide.feature.feature.group"/>
       <requirement
           name="com.querix.dbt.native.feature.feature.group"/>
-      <requirement
+      <!--requirement
           name="com.querix.dbt.dsl.sdk.feature.group"/>
       <requirement
-          name="com.querix.dbt.dsl.tests"/>
+          name="com.querix.dbt.dsl.tests"/-->
       <requirement
           name="com.querix.dbt.model.tests"/>
       <requirement
