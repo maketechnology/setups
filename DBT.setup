@@ -151,10 +151,7 @@
       label="Git Repository">
     <choice
         value="https://${git.user.id|username}@gitlab.com/@{remoteURI}.git"
-        label="HTTP (read-write, credentials)">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-    </choice>
+        label="HTTP (read-write, credentials)"/>
     <choice
         value="ssh://git@gitlab.com:@{remoteURI}.git"
         label="SSH (read-write, ssh keys)"/>
@@ -208,10 +205,6 @@
           name="com.querix.dbt.ide.feature.feature.group"/>
       <requirement
           name="com.querix.dbt.native.feature.feature.group"/>
-      <!--requirement
-          name="com.querix.dbt.dsl.sdk.feature.group"/>
-      <requirement
-          name="com.querix.dbt.dsl.tests"/-->
       <requirement
           name="com.querix.dbt.model.tests"/>
       <requirement
@@ -678,8 +671,10 @@
   </setupTask>
   <setupTask
       xsi:type="setup:EclipseIniTask"
+      excludedTriggers="BOOTSTRAP"
+      predecessor="git.clone"
       option="-Doomph.redirection.dbtSetup"
-      value="=https://raw.githubusercontent.com/maketechnology/setups/master/DBT.setup->${git.clone.location}/git/com.querix.dbt.releng/DBT.setup"
+      value="=https://raw.githubusercontent.com/maketechnology/setups/master/DBT.setup->${git.clone.location|url}/com.querix.dbt.releng/DBT.setup"
       vm="true"/>
   <stream name="it2"
       label="it2"/>
