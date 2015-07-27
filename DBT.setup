@@ -153,7 +153,7 @@
         value="https://${git.user.id|username}@gitlab.com/@{remoteURI}.git"
         label="HTTP (read-write, credentials)"/>
     <choice
-        value="ssh://git@gitlab.com:@{remoteURI}.git"
+        value="git@gitlab.com:@{remoteURI}.git"
         label="SSH (read-write, ssh keys)"/>
     <description>Choose from the available Git URIs</description>
   </setupTask>
