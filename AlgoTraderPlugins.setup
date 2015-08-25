@@ -142,8 +142,6 @@
     <requirement
         name="org.eclipse.ease.modules.feature.feature.group"/>
     <requirement
-        name="org.eclipse.ease.lang.groovy.feature.feature.group"/>
-    <requirement
         name="org.eclipse.ease.ui.feature.feature.group"/>
     <repository
         url="http://www.jnario.org/updates/snapshot"/>
@@ -151,8 +149,10 @@
         url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
     <repository
         url="http://download.eclipse.org/ease/update/release"/>
+    <requirement
+        name="org.eclipse.rcptt.platform.feature.group"/>
     <repository
-        url="http://topcased-mm.gforge.enseeiht.fr/ease_groovy/updates/latest/"/>
+        url="http://download.eclipse.org/rcptt/release/2.0.0/repository"/>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
@@ -261,8 +261,6 @@
       <requirement
           name="org.eclipse.ease.modules.feature.feature.group"/>
       <requirement
-          name="org.eclipse.ease.lang.groovy.feature.feature.group"/>
-      <requirement
           name="org.eclipse.ease.ui.feature.feature.group"/>
       <requirement
           name="org.jnario.lib"/>
@@ -313,8 +311,6 @@
             url="http://www.jnario.org/updates/snapshot"/>
         <repository
             url="http://download.eclipse.org/ease/update/release"/>
-        <repository
-            url="http://topcased-mm.gforge.enseeiht.fr/ease_groovy/updates/latest/"/>
         <repository
             url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
         <repository
