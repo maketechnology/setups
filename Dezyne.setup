@@ -28,8 +28,6 @@
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
     <requirement
-        name="com.tetrade.eclipse.plugins.easyshell.feature.feature.group"/>
-    <requirement
         name="org.jnario.sdk.feature.group"
         versionRange="[1.1.0,2.0.0)"/>
     <requirement
@@ -38,14 +36,16 @@
     <requirement
         name="org.eclipse.jdt.junit.runners.feature.feature.group"/>
     <requirement
+        name="org.eclipse.pde.junit.runtime"/>
+    <requirement
         name="net.jeeeyul.eclipse.themes.feature.feature.group"/>
     <requirement
         name="com.github.eclipsecolortheme.feature.feature.group"/>
     <requirement
-        name="com.vogella.saneclipse.feature.feature.group"/>
-    <requirement
         name="org.eclipse.fx.ide.feature.feature.group"
         optional="true"/>
+    <requirement
+        name="org.eclipse.rcptt.platform.feature.group"/>
     <repository
         url="http://download.eclipse.org/releases/luna"/>
     <repository
@@ -74,6 +74,8 @@
         url="http://eclipse-color-theme.github.io/update/"/>
     <repository
         url="http://download.eclipse.org/efxclipse/updates-released/1.1.0/site"/>
+    <repository
+        url="http://download.eclipse.org/rcptt/release/2.0.0/repository"/>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -149,6 +151,8 @@
             versionRange="[1.1.0,2.0.0)"/>
         <requirement
             name="org.eclipse.jdt.junit.runners.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.pde.junit.runtime"/>
         <requirement
             name="org.mozilla.javascript"
             versionRange="[1.7.4,2.0.0)"/>
