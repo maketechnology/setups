@@ -22,8 +22,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="Mars"
-      defaultValue="Mars"
+      value="Kepler"
+      defaultValue="Kepler"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
@@ -182,6 +182,22 @@
           name="com.querix.fgl.wstools"/>
       <requirement
           name="org.eclipse.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.birt.feature.group"/>
+      <requirement
+          name="org.apache.commons.el"/>
+      <requirement
+          name="org.apache.jasper"/>
+      <requirement
+          name="org.apache.lucene"/>
+      <requirement
+          name="org.mortbay.jetty.server"/>
+      <requirement
+          name="org.mortbay.jetty.util"/>
+      <requirement
+          name="org.eclipse.wb.os.linux"
+          optional="true"
+          filter="(osgi.os=linux)"/>
       <sourceLocator
           rootFolder="${git.clone.location}"
           locateNestedProjects="true"/>
@@ -191,6 +207,8 @@
             url="http://download.eclipse.org/releases/mars"/>
         <repository
             url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
       </repositoryList>
       <repositoryList
           name="Luna">
@@ -198,6 +216,8 @@
             url="http://download.eclipse.org/releases/luna"/>
         <repository
             url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150124073747/repository/"/>
       </repositoryList>
       <repositoryList
           name="Kepler">
@@ -205,6 +225,8 @@
             url="http://download.eclipse.org/releases/kepler"/>
         <repository
             url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/"/>
       </repositoryList>
       <repositoryList
           name="Juno">
