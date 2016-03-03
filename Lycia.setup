@@ -195,6 +195,20 @@
       <requirement
           name="org.mortbay.jetty.util"/>
       <requirement
+          name="org.eclipse.wb.core.ui.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.xml.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.doc.user.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.rcp.doc.user.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.xwt.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.pde.feature.group"/>
+      <requirement
           name="org.eclipse.wb.os.linux"
           optional="true"
           filter="(osgi.os=linux)"/>
