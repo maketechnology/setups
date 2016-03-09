@@ -5,11 +5,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
-    name="LyciaStudio"
-    label="LyciaStudio">
+    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    name="lycia.studio"
+    label="Lycia Studio">
   <setupTask
       xsi:type="jdt:JRETask"
       version="JavaSE-1.7"
@@ -17,9 +20,15 @@
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
+      xsi:type="setup:VariableTask"
+      name="eclipse.target.platform"
+      value="Kepler"
+      defaultValue="Kepler"
+      storageURI="scope://Workspace"/>
+  <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Xmx"
-      value="2048m"
+      value="1024m"
       vm="true">
     <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
   </setupTask>
@@ -33,64 +42,61 @@
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="eclipse.target.platform"
-      value="Kepler"
-      defaultValue=""
-      storageURI="scope://Workspace"
-      label="Target Platform">
+      name="gitlab.user.id"
+      label="Gitlab user ID">
     <annotation
-        source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-    <choice
-        value="Mars"
-        label="Eclipse Mars - 4.5"/>
-    <choice
-        value="Luna"
-        label="Eclipse Luna - 4.4"/>
-    <choice
-        value="Kepler"
-        label="Eclipse Kepler - 4.3"/>
-    <choice
-        value="Juno"
-        label="Eclipse Juno - 4.2"/>
-    <choice
-        value="Indigo"
-        label="Eclipse Indigo - 3.7"/>
-    <choice
-        value="Helios"
-        label="Eclipse Helios - 3.6"/>
-    <choice
-        value="Galileo"
-        label="Eclipse Galileo - 3.5"/>
-    <choice
-        value="None"
-        label="None"/>
-    <description>Choose the compatibly level of the target platform</description>
+        source="http://www.eclipse.org/oomph/setup/InducedChoices">
+      <detail
+          key="target">
+        <value>userID</value>
+      </detail>
+    </annotation>
+    <description>The Gitlab user ID</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="bitbucket.git.remoteURIs"
-      label="Eclipse Git Repository">
+      name="gitlab.remoteURIs"
+      label="Gitlab repository">
     <choice
-        value="https://${git.user.id|username}@bitbucket.org/@{remoteURI}.git"
-        label="HTTP (read-write)">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-    </choice>
+        value="git@@{remoteURI}:gzunino/lyciastudio.git"
+        label="GIT SSH (requires pre ssh-keys)"/>
     <choice
-        value="ssh://git@bitbucket.org:@{remoteURI}.git"
-        label="SSH (read-write)"/>
-    <description>Choose from the available Git URIs</description>
+        value="https://@{remoteURI}/gzunino/lyciastudio.git"
+        label="HTTPS (with user/pass)"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+    <requirement
+        name="epp.package.rcp"
+        versionRange="[4.5.0,4.6.0)"/>
+    <requirement
+        name="org.eclipse.platform.feature.group"
+        versionRange="[4.5.0,4.6.0)"/>
+    <requirement
+        name="org.eclipse.rcp.feature.group"
+        versionRange="[4.5.0,4.6.0)"/>
+    <requirement
+        name="org.eclipse.jdt.feature.group"
+        versionRange="[3.11.0,3.12.0)"/>
+    <requirement
+        name="org.eclipse.pde.feature.group"
+        versionRange="[3.11.0,3.12.0)"/>
+    <repository
+        url="http://download.eclipse.org/releases/mars/201602261000"/>
+    <repository
+        url="http://download.eclipse.org/eclipse/updates/4.5"/>
+    <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone"
       location="${workspace.location/git}"
-      remoteURI="lyciastudio/lyciastudio">
+      remoteURI="gitlab.com">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
           key="inherit">
-        <value>bitbucket.git.remoteURIs</value>
+        <value>gitlab.remoteURIs</value>
       </detail>
       <detail
           key="label">
@@ -104,43 +110,161 @@
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
+      xsi:type="setup:CompoundTask"
+      name="User Preferences">
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.core.resources">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.core.resources/encoding"
+          value="UTF-8"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.jdt.core">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform"
+          value="1.7"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance"
+          value="1.7"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.forbiddenReference"
+          value="warning"/>
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source"
+          value="1.7"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.oomph.setup.ui">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
+          value="true"/>
+    </setupTask>
+  </setupTask>
+  <setupTask
       xsi:type="setup.targlets:TargletTask">
     <targlet
         name="${scope.project.label}"
         activeRepositoryList="${eclipse.target.platform}">
       <requirement
+          name="com.querix.fgl.build"/>
+      <requirement
+          name="com.querix.fgl.core"/>
+      <requirement
+          name="com.querix.fgl.debug.core"/>
+      <requirement
+          name="com.querix.fgl.debug.ui"/>
+      <requirement
+          name="com.querix.fgl.forms.core"/>
+      <requirement
+          name="com.querix.fgl.forms.designer"/>
+      <requirement
+          name="com.querix.fgl.gfe.core"/>
+      <requirement
+          name="com.querix.fgl.gfe.ui"/>
+      <requirement
+          name="com.querix.fgl.help"/>
+      <requirement
+          name="com.querix.fgl.launching"/>
+      <requirement
+          name="com.querix.fgl.product"/>
+      <requirement
+          name="com.querix.fgl.ui"/>
+      <requirement
+          name="com.querix.fgl.wstools"/>
+      <requirement
           name="org.eclipse.sdk.feature.group"/>
       <requirement
-          name="org.eclipse.platform.feature.group"/>
+          name="org.eclipse.birt.feature.group"/>
       <requirement
-          name="org.eclipse.rcp.feature.group"/>
+          name="org.apache.commons.el"/>
       <requirement
-          name="com.querix.fgl.feature.group"/>
+          name="org.apache.jasper"/>
       <requirement
-          name="org.eclipse.wb.core.xml"/>
+          name="org.apache.lucene"/>
+      <requirement
+          name="org.mortbay.jetty.server"/>
+      <requirement
+          name="org.mortbay.jetty.util"/>
+      <requirement
+          name="org.eclipse.wb.core.ui.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.xml.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.doc.user.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.rcp.doc.user.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.xwt.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.pde.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.os.linux"
+          optional="true"
+          filter="(osgi.os=linux)"/>
       <sourceLocator
           rootFolder="${git.clone.location}"
           locateNestedProjects="true"/>
       <repositoryList
+          name="Mars">
+        <repository
+            url="http://download.eclipse.org/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
+      </repositoryList>
+      <repositoryList
           name="Luna">
         <repository
             url="http://download.eclipse.org/releases/luna"/>
+        <repository
+            url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150124073747/repository/"/>
       </repositoryList>
       <repositoryList
           name="Kepler">
         <repository
             url="http://download.eclipse.org/releases/kepler"/>
+        <repository
+            url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/"/>
       </repositoryList>
       <repositoryList
-          name="Indigo">
+          name="Juno">
         <repository
-            url="http://download.eclipse.org/releases/indigo"/>
+            url="http://download.eclipse.org/releases/juno"/>
+        <repository
+            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
     </targlet>
   </setupTask>
-  <stream name="master"/>
+  <setupTask
+      xsi:type="setup.workingsets:WorkingSetTask">
+    <workingSet
+        name="${scope.project.name}">
+      <predicate
+          xsi:type="predicates:NamePredicate"
+          pattern="com.querix.*"/>
+    </workingSet>
+    <description>The dynamic working sets for ${scope.project.label}</description>
+  </setupTask>
+  <stream name="master"
+      label="Master"/>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
-  <description>LyciaStudio</description>
+  <description>Querix Lycia Studio</description>
 </setup:Project>
