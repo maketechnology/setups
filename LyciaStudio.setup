@@ -58,10 +58,10 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="git@@{remoteURI}:gzunino/lyciastudio.git"
+        value="git@@{remoteURI}:maketechnology/lyciastudio.git"
         label="GIT SSH (requires pre ssh-keys)"/>
     <choice
-        value="https://@{remoteURI}/gzunino/lyciastudio.git"
+        value="https://@{remoteURI}/maketechnology/lyciastudio.git"
         label="HTTPS (with user/pass)"/>
   </setupTask>
   <setupTask
