@@ -73,6 +73,12 @@
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
         versionRange="2.7.3"/>
+    <requirement
+        name="org.eclipse.recommenders.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.mylyn.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.snipmatch.rcp.feature.feature.group"/>
     <repository
         url="http://download.eclipse.org/releases/mars"/>
     <repository
@@ -81,6 +87,8 @@
         url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+    <repository
+        url="http://download.eclipse.org/recommenders/updates/stable/"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -89,16 +97,9 @@
     <requirement
         name="com.github.eclipsecolortheme.feature.feature.group"/>
     <requirement
-        name="org.eclipse.fx.ide.feature.feature.group"
-        optional="true"/>
-    <requirement
         name="net.jeeeyul.eclipse.themes.feature.feature.group"/>
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
-    <repository
-        url="http://download.eclipse.org/efxclipse/updates-released/1.1.0/site"/>
-    <repository
-        url="http://feeling.sourceforge.net/update"/>
     <repository
         url="http://eclipse.jeeeyul.net/update/"/>
     <repository
@@ -209,6 +210,14 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.xtend.core.Xtend/outlet.DEFAULT_OUTPUT.cleanDirectory"
+          value="false"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.ui.editors">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.editors/showWhitespaceCharacters"
           value="true"/>
     </setupTask>
   </setupTask>
@@ -238,7 +247,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.location/com.verum.asdgen2.releng/com.verum.asdgen2.target}</value>
+          <value>${git.clone.location/com.verum.asdgen2.releng/com.verum.asdgen2.target.target}</value>
         </detail>
         <detail
             key="includeAllPlatforms">
@@ -248,7 +257,19 @@
             key="includeSource">
           <value>false</value>
         </detail>
+        <detail
+            key="generateImplicitUnits">
+          <value>true</value>
+        </detail>
+        <detail
+            key="generateVersions">
+          <value>false</value>
+        </detail>
       </annotation>
+      <requirement
+          name="org.zeroturnaround.zt-exec"/>
+      <requirement
+          name="slf4j.api"/>
       <requirement
           name="org.eclipse.platform.feature.group"/>
       <requirement
@@ -257,7 +278,7 @@
           name="org.eclipse.equinox.executable.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.8.0,2.9.0)"/>
+          versionRange="[2.9.0,2.10.0)"/>
       <requirement
           name="com.verum.asdgen2.ide.feature.feature.group"/>
       <requirement
@@ -277,9 +298,25 @@
       <requirement
           name="com.verum.asdgen2.client.tests"/>
       <requirement
-          name="com.verum.asdgen2.uitests"/>
+          name="com.verum.asdgen2.ui.operations.tests"/>
       <requirement
-          name="org.eclipse.fx.javafx"/>
+          name="com.verum.asdgen2.ui.rcptests.plain.project"/>
+      <requirement
+          name="com.codeaffine.console.core.pdetest"/>
+      <requirement
+          name="com.codeaffine.gonsole.test.util"/>
+      <requirement
+          name="io.socket.io-client"/>
+      <requirement
+          name="io.socket.engine.io-client"/>
+      <requirement
+          name="com.squareup.okhttp3.okhttp"/>
+      <requirement
+          name="com.squareup.okhttp3.okhttp-ws"/>
+      <requirement
+          name="com.squareup.okio"/>
+      <requirement
+          name="org.json"/>
       <requirement
           name="org.eclipse.fx.osgi"/>
       <requirement
@@ -317,13 +354,21 @@
       <requirement
           name="org.hamcrest.library"/>
       <requirement
-          name="org.eclipselabs.xtext.utils.unittesting.feature.feature.group"/>
-      <requirement
           name="org.eclipse.nebula.widgets.paperclips.feature.feature.group"/>
       <requirement
           name="org.assertj.core"/>
       <requirement
           name="org.jboss.tools.locus.mockito"/>
+      <requirement
+          name="com.github.eclipsecolortheme.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ecf.filetransfer.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ecf.core.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ecf.core.feature.group"/>
+      <requirement
+          name="org.apache.commons.compress"/>
       <sourceLocator
           rootFolder="${git.clone.location}">
         <predicate
@@ -347,13 +392,19 @@
         <repository
             url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
         <repository
-            url="http://xtext-utils.eclipselabs.org.codespot.com/git.distribution/releases/unittesting-0.9.x"/>
-        <repository
             url="http://download.eclipse.org/efxclipse/runtime-released/2.1.0/site"/>
         <repository
-            url="http://download.eclipse.org/technology/nebula/archives/Q12015/release/"/>
+            url="http://archive.eclipse.org/nebula/Q42015/release/"/>
         <repository
             url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
+        <repository
+            url="http://eclipse-color-theme.github.io/update/"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins/"/>
+        <repository
+            url="http://fappel.github.io/xiliary"/>
+        <repository
+            url="http://fappel.github.io/test-libraries/"/>
       </repositoryList>
       <repositoryList
           name="Luna">
@@ -376,7 +427,7 @@
         <repository
             url="http://download.eclipse.org/efxclipse/runtime-released/1.1.0/site"/>
         <repository
-            url="http://download.eclipse.org/technology/nebula/archives/Q12015/release/"/>
+            url="http://archive.eclipse.org/nebula/Q12015/release/"/>
         <repository
             url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
       </repositoryList>
@@ -384,6 +435,7 @@
   </setupTask>
   <setupTask
       xsi:type="projects:ProjectsBuildTask"
+      onlyNewProjects="true"
       refresh="true">
     <predicate
         xsi:type="predicates:NamePredicate"
