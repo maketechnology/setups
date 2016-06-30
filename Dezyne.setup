@@ -60,11 +60,11 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="git@@{remoteURI}:gzunino/asdgen2.git"
-        label="gzunino GIT SSH (requires pre ssh-keys)"/>
+        value="git@@{remoteURI}:maketechnology/dezyne.git"
+        label="GIT SSH (requires pre ssh-keys)"/>
     <choice
-        value="https://@{remoteURI}/gzunino/asdgen2.git"
-        label="gzunino HTTPS (with user/pass)"/>
+        value="https://@{remoteURI}/maketechnology/dezyne.git"
+        label="HTTPS (with user/pass)"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
@@ -226,7 +226,7 @@
       id="setup.redirect"
       disabled="true"
       sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
-      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
+      targetURL="${workspace.location|uri}/git/com.verum.dezyne.releng/Dezyne.setup">
     <description>
       Redirects setup from public https://github.com/maketechnology
       to checkouted GIT repo.
@@ -236,7 +236,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.dezyneSetup"
-      value="=https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup->${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup"
+      value="=https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup->${workspace.location|uri}/git/com.verum.dezyne.releng/Dezyne.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup.targlets:TargletTask">
@@ -247,7 +247,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.location/com.verum.asdgen2.releng/com.verum.asdgen2.target.target}</value>
+          <value>${git.clone.location/com.verum.dezyne.releng/com.verum.dezyne.target.target}</value>
         </detail>
         <detail
             key="includeAllPlatforms">
@@ -280,27 +280,29 @@
           name="org.eclipse.xtext.sdk.feature.group"
           versionRange="[2.9.0,2.10.0)"/>
       <requirement
-          name="com.verum.asdgen2.ide.feature.feature.group"/>
+          name="com.verum.dezyne.ide.feature.feature.group"/>
       <requirement
-          name="com.verum.asdgen2.asd.sdk.feature.group"/>
+          name="com.verum.dezyne.asd.sdk.feature.group"/>
       <requirement
-          name="com.verum.asdgen2.releng"/>
+          name="com.verum.dezyne.releng"/>
       <requirement
-          name="com.verum.asdgen2.product"/>
+          name="com.verum.dezyne.product"/>
       <requirement
-          name="com.verum.asdgen2.jre.feature.feature.group"/>
+          name="com.verum.dezyne.jre.feature.feature.group"/>
       <requirement
-          name="com.verum.asdgen2.jre.product"/>
+          name="com.verum.dezyne.jre.product"/>
       <requirement
-          name="com.verum.asdgen2.target"/>
+          name="com.verum.dezyne.target.plain.project"/>
       <requirement
-          name="com.verum.asdgen2.asd.tests"/>
+          name="com.verum.dezyne.asd.tests"/>
       <requirement
-          name="com.verum.asdgen2.client.tests"/>
+          name="com.verum.dezyne.client.tests"/>
       <requirement
-          name="com.verum.asdgen2.ui.operations.tests"/>
+          name="com.verum.dezyne.ui.operations.tests"/>
       <requirement
-          name="com.verum.asdgen2.ui.rcptests.plain.project"/>
+          name="com.verum.dezyne.product.tests"/>
+      <requirement
+          name="com.verum.dezyne.ui.rcptests.plain.project"/>
       <requirement
           name="com.codeaffine.console.core.pdetest"/>
       <requirement
@@ -439,12 +441,12 @@
       refresh="true">
     <predicate
         xsi:type="predicates:NamePredicate"
-        pattern="com.verum.asdgen2.*"/>
+        pattern="com.verum.dezyne.*"/>
   </setupTask>
   <setupTask
       xsi:type="launching:LaunchTask"
       id="xtext mwe"
-      launcher="/com.verum.asdgen2.asd/.launch/Generate Language Infrastructure (com.verum.asdgen2.asd).launch">
+      launcher="/com.verum.dezyne.asd/.launch/Generate Language Infrastructure (com.verum.dezyne.asd).launch">
     <description>Generates Xtext code</description>
   </setupTask>
   <stream name="master"/>
