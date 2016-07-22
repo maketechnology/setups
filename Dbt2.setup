@@ -74,26 +74,78 @@
         name="org.eclipse.emf.ecore.xcore.sdk.feature.group"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.mylyn.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.snipmatch.rcp.feature.feature.group"/>
     <repository
         url="http://download.eclipse.org/releases/mars"/>
     <repository
         url="http://download.eclipse.org/eclipse/updates/4.5"/>
     <repository
-        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
-    <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+    <repository
+        url="http://download.eclipse.org/recommenders/updates/stable/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      id="dtp"
+      label="DTP">
+    <requirement
+        name="org.eclipse.datatools.enablement.sdk.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.datatools.sdk.feature.feature.group"/>
+    <repository
+        url="http://download.eclipse.org/datatools/updates/1.12"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
       id="ecp"
       label="ECP">
     <requirement
-        name="org.eclipse.emf.ecp.sdk.feature.feature.group"/>
-    <requirement
         name="org.eclipse.emf.ecp.emfforms.sdk.feature.feature.group"/>
     <repository
-        url="http://download.eclipse.org/ecp/releases/releases_15"/>
+        url="http://download.eclipse.org/ecp/releases/releases_17"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      id="sirius"
+      label="Sirius">
+    <requirement
+        name="org.eclipse.sirius.doc.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.eef.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.xtext.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.samples.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.aql.feature.group"/>
+    <repository
+        url="http://download.eclipse.org/sirius/updates/releases/3.1.1/mars"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      id="tools"
+      label="Tools">
+    <requirement
+        name="org.eclipse.ajdt.feature.group"/>
+    <requirement
+        name="org.eclipse.contribution.weaving.feature.group"/>
+    <requirement
+        name="org.maven.ide.eclipse.ajdt.feature.feature.group"/>
+    <repository
+        url="http://download.eclipse.org/tools/ajdt/45/dev/update"/>
+    <repository
+        url="http://dist.springsource.org/release/AJDT/configurator-v2/"/>
+    <description></description>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -115,8 +167,38 @@
       label="Test Plugins">
     <requirement
         name="org.eclipse.rcptt.platform.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.eclipse.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.gef.spy.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.graphiti.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.help.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.junit.extension.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.logparser.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.rcp.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.recorder.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.spy.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.tests.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.ui.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.swtbot.generator.feature.feature.group"/>
+    <requirement
+        name="org.mockito"/>
     <repository
-        url="http://download.eclipse.org/rcptt/release/2.0.0/repository"/>
+        url="http://download.eclipse.org/rcptt/release/2.0.1/repository"/>
+    <repository
+        url="http://download.jboss.org/jbosstools/updates/stable/mars/core/reddeer/1.0.1"/>
+    <repository
+        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
@@ -188,7 +270,7 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.xtend.core.Xtend/outlet.DEFAULT_OUTPUT.cleanDirectory"
-          value="true"/>
+          value="false"/>
     </setupTask>
   </setupTask>
   <setupTask
@@ -200,7 +282,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.location/com.querix.dbt.releng/com.querix.dbt.target}</value>
+          <value>${git.clone.location/com.querix.dbt.target/com.querix.dbt.target.target}</value>
         </detail>
         <detail
             key="includeAllPlatforms">
@@ -210,11 +292,45 @@
             key="includeSource">
           <value>false</value>
         </detail>
+        <detail
+            key="generateVersions">
+          <value>false</value>
+        </detail>
+        <detail
+            key="generateImplicitUnits">
+          <value>false</value>
+        </detail>
       </annotation>
       <requirement
           name="com.querix.dbt.ide.feature.feature.group"/>
       <requirement
+          name="org.mockito"/>
+      <requirement
+          name="org.eclipse.emf.ecp.ide.view.service"/>
+      <requirement
+          name="com.querix.dbt.product.plain.project"/>
+      <requirement
+          name="com.querix.dbt.releng.plain.project"/>
+      <requirement
+          name="com.querix.dbt.target.plain.project"/>
+      <requirement
+          name="com.querix.dbt.erd.sample.plain.project"/>
+      <requirement
+          name="com.querix.dbt.sql.test.plain.project"/>
+      <requirement
+          name="com.querix.dbt.ui.test.plain.project"/>
+      <requirement
+          name="com.querix.dbt.erd.test.plain.project"/>
+      <requirement
           name="org.eclipse.sdk.feature.group"/>
+      <requirement
+          name="net.jeeeyul.eclipse.themes.feature.feature.group"/>
+      <requirement
+          name="net.jeeeyul.swtend.feature.feature.group"/>
+      <requirement
+          name="com.codeaffine.eclipse.ui.swt.theme.feature.feature.group"/>
+      <requirement
+          name="com.github.eclipsecolortheme.feature.feature.group"/>
       <requirement
           name="org.eclipse.platform.feature.group"/>
       <requirement
@@ -224,58 +340,185 @@
       <requirement
           name="com.google.guava"/>
       <requirement
-          name="org.apache.commons.beanutils"/>
-      <requirement
-          name="org.apache.commons.collections"/>
-      <requirement
           name="org.objectweb.asm"
           versionRange="[5.0.1,6.0.0)"/>
       <requirement
-          name="org.jboss.tools.locus.mockito"/>
+          name="org.eclipse.datatools.enablement.sdk.feature.feature.group"/>
       <requirement
-          name="org.assertj.core"/>
+          name="org.eclipse.datatools.sdk.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.ecp.emfforms.sdk.feature.feature.group"
+          versionRange="[1.7.0,1.8.0)"/>
       <requirement
           name="org.eclipse.egit.feature.group"/>
       <requirement
           name="org.eclipse.jgit.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.compare.diagram.gmf.feature.group"
+          versionRange="[3.1.0,3.2.0)"/>
+      <requirement
+          name="org.eclipse.emf.compare.egit.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.compare.feature.group"
+          versionRange="[3.1.0,3.2.0)"/>
+      <requirement
+          name="org.eclipse.emf.compare.rcp.ui.feature.group"
+          versionRange="[3.1.0,3.2.0)"/>
+      <requirement
+          name="org.eclipse.emf.compare.ide.ui.feature.group"
+          versionRange="[3.1.0,3.2.0)"/>
+      <requirement
+          name="oracle.eclipse.tools.database.feature.group"/>
+      <requirement
+          name="oracle.eclipse.tools.patches.feature.group"/>
+      <requirement
+          name="com.sun.jersey.client"/>
+      <requirement
+          name="org.eclipse.sirius.aql.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.source.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.aql.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.ide.eef.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.ide.xtext.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+      <requirement
+          name="org.eclipse.sirius.runtime.ide.ui.source.feature.group"/>
+      <requirement
+          name="org.eclipse.elk.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.elk.gmf.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.eef.runtime-feature.feature.group"/>
+      <requirement
+          name="org.eclipse.acceleo.query.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.cdo.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.equinox.weaving.sdk.feature.group"/>
+      <requirement
+          name="com.tngtech.jgiven.html5-report"/>
+      <requirement
+          name="com.tngtech.jgiven.core"/>
+      <requirement
+          name="com.tngtech.jgiven.junit"/>
+      <requirement
+          name="com.tngtech.java.junit.dataprovider"/>
+      <requirement
+          name="com.thoughtworks.paranamer"/>
+      <requirement
+          name="cglib.nodep"/>
+      <requirement
+          name="org.fusesource.jansi"/>
+      <requirement
+          name="com.google.gson"/>
+      <requirement
+          name="org.assertj.core"/>
+      <requirement
+          name="org.hamcrest.core"/>
+      <requirement
+          name="org.hamcrest.library"/>
+      <requirement
+          name="org.hamcrest"/>
+      <requirement
+          name="org.jboss.reddeer.eclipse.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.gef.spy.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.graphiti.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.junit.extension.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.logparser.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.rcp.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.recorder.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.spy.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.tests.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.ui.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.swtbot.generator.feature.feature.group"/>
       <sourceLocator
           rootFolder="${git.clone.location}"
           locateNestedProjects="true"/>
       <repositoryList
           name="Mars">
         <repository
-            url="http://download.eclipse.org/releases/mars"/>
+            url="http://download.eclipse.org/releases/mars/201602261000"/>
         <repository
             url="http://download.eclipse.org/cbi/updates/license"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
         <repository
-            url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.9.2/"/>
         <repository
-            url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.3.0-SNAPSHOT/update.site-1.3.0-SNAPSHOT.zip-unzip/"/>
+            url="http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/xcore/R201502020452/"/>
+        <repository
+            url="http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/core/S201501230452/"/>
+        <repository
+            url="http://download.eclipse.org/datatools/updates/1.12"/>
+        <repository
+            url="http://download.eclipse.org/ecp/releases/releases_target_17/172"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/12.2.1/mars/repository/tools"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/library/eclipse-mars.1"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/library/jersey-1.17.1-p002/"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/library/jackson-1.9.13"/>
+        <repository
+            url="http://download.eclipse.org/sirius/updates/releases/3.1.1/mars"/>
         <repository
             url="http://download.eclipse.org/egit/updates"/>
+        <repository
+            url="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
+        <repository
+            url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/45/dev/update/ajdt-e45-2.2.4.201604061446"/>
+        <repository
+            url="http://fappel.github.io/xiliary/0.2/0.2.0.20160321-0619"/>
+        <repository
+            url="http://eclipse.jeeeyul.net/update/"/>
+        <repository
+            url="http://eclipse-color-theme.github.io/update/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/stable/mars/core/reddeer/1.0.1"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins/"/>
+        <repository
+            url="http://download.eclipse.org/elk/updates/nightly/"/>
       </repositoryList>
       <repositoryList
           name="Luna">
         <repository
-            url="http://download.eclipse.org/releases/luna"/>
+            url="http://download.eclipse.org/releases/luna/201502271000"/>
         <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
+            url="http://download.eclipse.org/cbi/updates/license/1.0.1.v20140414-1359"/>
       </repositoryList>
       <repositoryList
           name="Kepler">
         <repository
-            url="http://download.eclipse.org/releases/kepler"/>
+            url="http://download.eclipse.org/releases/kepler/201402280900"/>
         <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
+            url="http://download.eclipse.org/cbi/updates/license/1.0.1.v20140414-1359"/>
       </repositoryList>
       <repositoryList
           name="Juno">
         <repository
-            url="http://download.eclipse.org/releases/juno"/>
+            url="http://download.eclipse.org/releases/juno/201303010900"/>
         <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
+            url="http://download.eclipse.org/cbi/updates/license/1.0.1.v20140414-1359"/>
       </repositoryList>
     </targlet>
   </setupTask>
