@@ -24,8 +24,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="Mars"
-      defaultValue="Mars"
+      value="Neon"
+      defaultValue="Neon"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
@@ -60,11 +60,11 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="git@@{remoteURI}:gzunino/asdgen2.git"
-        label="gzunino GIT SSH (requires pre ssh-keys)"/>
+        value="git@@{remoteURI}:maketechnology/dezyne.git"
+        label="GIT SSH (requires pre ssh-keys)"/>
     <choice
-        value="https://@{remoteURI}/gzunino/asdgen2.git"
-        label="gzunino HTTPS (with user/pass)"/>
+        value="https://@{remoteURI}/maketechnology/dezyne.git"
+        label="HTTPS (with user/pass)"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
@@ -73,14 +73,22 @@
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
         versionRange="2.7.3"/>
+    <requirement
+        name="org.eclipse.recommenders.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.mylyn.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.snipmatch.rcp.feature.feature.group"/>
     <repository
-        url="http://download.eclipse.org/releases/mars"/>
+        url="http://download.eclipse.org/releases/neon"/>
     <repository
-        url="http://download.eclipse.org/eclipse/updates/4.5"/>
+        url="http://download.eclipse.org/eclipse/updates/4.6"/>
     <repository
         url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+    <repository
+        url="http://download.eclipse.org/recommenders/updates/stable/"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -89,16 +97,9 @@
     <requirement
         name="com.github.eclipsecolortheme.feature.feature.group"/>
     <requirement
-        name="org.eclipse.fx.ide.feature.feature.group"
-        optional="true"/>
-    <requirement
         name="net.jeeeyul.eclipse.themes.feature.feature.group"/>
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
-    <repository
-        url="http://download.eclipse.org/efxclipse/updates-released/1.1.0/site"/>
-    <repository
-        url="http://feeling.sourceforge.net/update"/>
     <repository
         url="http://eclipse.jeeeyul.net/update/"/>
     <repository
@@ -137,7 +138,7 @@
         name="org.jnario.sdk.feature.group"
         versionRange="[1.1.0,2.0.0)"/>
     <repository
-        url="http://download.eclipse.org/rcptt/release/2.0.2/repository"/>
+        url="http://download.eclipse.org/rcptt/release/2.1.0/repository"/>
     <repository
         url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
     <repository
@@ -209,6 +210,14 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.xtend.core.Xtend/outlet.DEFAULT_OUTPUT.cleanDirectory"
+          value="false"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="org.eclipse.ui.editors">
+      <setupTask
+          xsi:type="setup:PreferenceTask"
+          key="/instance/org.eclipse.ui.editors/showWhitespaceCharacters"
           value="true"/>
     </setupTask>
   </setupTask>
@@ -217,7 +226,7 @@
       id="setup.redirect"
       disabled="true"
       sourceURL="https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup"
-      targetURL="${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup">
+      targetURL="${workspace.location|uri}/git/com.verum.dezyne.releng/Dezyne.setup">
     <description>
       Redirects setup from public https://github.com/maketechnology
       to checkouted GIT repo.
@@ -227,7 +236,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.dezyneSetup"
-      value="=https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup->${workspace.location|uri}/git/com.verum.asdgen2.releng/Dezyne.setup"
+      value="=https://raw.githubusercontent.com/maketechnology/setups/master/Dezyne.setup->${workspace.location|uri}/git/com.verum.dezyne.releng/Dezyne.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup.targlets:TargletTask">
@@ -238,7 +247,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.location/com.verum.asdgen2.releng/com.verum.asdgen2.target}</value>
+          <value>${git.clone.location/com.verum.dezyne.releng/com.verum.dezyne.target.target}</value>
         </detail>
         <detail
             key="includeAllPlatforms">
@@ -248,7 +257,19 @@
             key="includeSource">
           <value>false</value>
         </detail>
+        <detail
+            key="generateImplicitUnits">
+          <value>true</value>
+        </detail>
+        <detail
+            key="generateVersions">
+          <value>false</value>
+        </detail>
       </annotation>
+      <requirement
+          name="org.zeroturnaround.zt-exec"/>
+      <requirement
+          name="slf4j.api"/>
       <requirement
           name="org.eclipse.platform.feature.group"/>
       <requirement
@@ -257,29 +278,47 @@
           name="org.eclipse.equinox.executable.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.8.0,2.9.0)"/>
+          versionRange="[2.9.0,2.10.0)"/>
       <requirement
-          name="com.verum.asdgen2.ide.feature.feature.group"/>
+          name="com.verum.dezyne.ide.feature.feature.group"/>
       <requirement
-          name="com.verum.asdgen2.asd.sdk.feature.group"/>
+          name="com.verum.dezyne.asd.sdk.feature.group"/>
       <requirement
-          name="com.verum.asdgen2.releng"/>
+          name="com.verum.dezyne.releng"/>
       <requirement
-          name="com.verum.asdgen2.product"/>
+          name="com.verum.dezyne.product"/>
       <requirement
-          name="com.verum.asdgen2.jre.feature.feature.group"/>
+          name="com.verum.dezyne.jre.feature.feature.group"/>
       <requirement
-          name="com.verum.asdgen2.jre.product"/>
+          name="com.verum.dezyne.jre.product"/>
       <requirement
-          name="com.verum.asdgen2.target"/>
+          name="com.verum.dezyne.target.plain.project"/>
       <requirement
-          name="com.verum.asdgen2.asd.tests"/>
+          name="com.verum.dezyne.asd.tests"/>
       <requirement
-          name="com.verum.asdgen2.client.tests"/>
+          name="com.verum.dezyne.client.tests"/>
       <requirement
-          name="com.verum.asdgen2.uitests"/>
+          name="com.verum.dezyne.ui.operations.tests"/>
       <requirement
-          name="org.eclipse.fx.javafx"/>
+          name="com.verum.dezyne.product.tests"/>
+      <requirement
+          name="com.verum.dezyne.ui.rcptests.plain.project"/>
+      <requirement
+          name="com.codeaffine.console.core.pdetest"/>
+      <requirement
+          name="com.codeaffine.gonsole.test.util"/>
+      <requirement
+          name="io.socket.io-client"/>
+      <requirement
+          name="io.socket.engine.io-client"/>
+      <requirement
+          name="com.squareup.okhttp3.okhttp"/>
+      <requirement
+          name="com.squareup.okhttp3.okhttp-ws"/>
+      <requirement
+          name="com.squareup.okio"/>
+      <requirement
+          name="org.json"/>
       <requirement
           name="org.eclipse.fx.osgi"/>
       <requirement
@@ -317,19 +356,58 @@
       <requirement
           name="org.hamcrest.library"/>
       <requirement
-          name="org.eclipselabs.xtext.utils.unittesting.feature.feature.group"/>
-      <requirement
           name="org.eclipse.nebula.widgets.paperclips.feature.feature.group"/>
       <requirement
           name="org.assertj.core"/>
       <requirement
           name="org.jboss.tools.locus.mockito"/>
+      <requirement
+          name="com.github.eclipsecolortheme.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ecf.filetransfer.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ecf.core.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ecf.core.feature.group"/>
+      <requirement
+          name="org.apache.commons.compress"/>
       <sourceLocator
           rootFolder="${git.clone.location}">
         <predicate
             xsi:type="predicates:NamePredicate"
             pattern=".*"/>
       </sourceLocator>
+      <repositoryList
+          name="Neon">
+        <repository
+            url="http://download.eclipse.org/releases/neon/"/>
+        <repository
+            url="http://download.eclipse.org/cbi/updates/license"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
+        <repository
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+        <repository
+            url="http://www.jnario.org/updates/snapshot"/>
+        <repository
+            url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
+        <repository
+            url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+        <repository
+            url="http://download.eclipse.org/efxclipse/runtime-released/2.1.0/site"/>
+        <repository
+            url="http://download.eclipse.org/nebula/snapshot/"/>
+        <repository
+            url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
+        <repository
+            url="http://eclipse-color-theme.github.io/update/"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins/"/>
+        <repository
+            url="http://fappel.github.io/xiliary"/>
+        <repository
+            url="http://fappel.github.io/test-libraries/"/>
+      </repositoryList>
       <repositoryList
           name="Mars">
         <repository
@@ -347,13 +425,19 @@
         <repository
             url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
         <repository
-            url="http://xtext-utils.eclipselabs.org.codespot.com/git.distribution/releases/unittesting-0.9.x"/>
-        <repository
             url="http://download.eclipse.org/efxclipse/runtime-released/2.1.0/site"/>
         <repository
-            url="http://download.eclipse.org/technology/nebula/archives/Q12015/release/"/>
+            url="http://archive.eclipse.org/nebula/Q42015/release/"/>
         <repository
             url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
+        <repository
+            url="http://eclipse-color-theme.github.io/update/"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins/"/>
+        <repository
+            url="http://fappel.github.io/xiliary"/>
+        <repository
+            url="http://fappel.github.io/test-libraries/"/>
       </repositoryList>
       <repositoryList
           name="Luna">
@@ -376,7 +460,7 @@
         <repository
             url="http://download.eclipse.org/efxclipse/runtime-released/1.1.0/site"/>
         <repository
-            url="http://download.eclipse.org/technology/nebula/archives/Q12015/release/"/>
+            url="http://archive.eclipse.org/nebula/Q12015/release/"/>
         <repository
             url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
       </repositoryList>
@@ -384,15 +468,16 @@
   </setupTask>
   <setupTask
       xsi:type="projects:ProjectsBuildTask"
+      onlyNewProjects="true"
       refresh="true">
     <predicate
         xsi:type="predicates:NamePredicate"
-        pattern="com.verum.asdgen2.*"/>
+        pattern="com.verum.dezyne.*"/>
   </setupTask>
   <setupTask
       xsi:type="launching:LaunchTask"
       id="xtext mwe"
-      launcher="/com.verum.asdgen2.asd/.launch/Generate Language Infrastructure (com.verum.asdgen2.asd).launch">
+      launcher="/com.verum.dezyne.asd/.launch/Generate Language Infrastructure (com.verum.dezyne.asd).launch">
     <description>Generates Xtext code</description>
   </setupTask>
   <stream name="master"/>
