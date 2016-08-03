@@ -22,8 +22,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="Kepler"
-      defaultValue="Kepler"
+      value="Mars"
+      defaultValue="Mars"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
@@ -58,34 +58,69 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="git@@{remoteURI}:maketechnology/lyciastudio.git"
-        label="GIT SSH (requires pre ssh-keys)"/>
-    <choice
         value="https://@{remoteURI}/maketechnology/lyciastudio.git"
         label="HTTPS (with user/pass)"/>
+    <choice
+        value="git@@{remoteURI}:maketechnology/lyciastudio.git"
+        label="GIT SSH (requires pre ssh-keys)"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
-        name="epp.package.rcp"
-        versionRange="[4.5.0,4.6.0)"/>
+        name="epp.package.rcp"/>
     <requirement
-        name="org.eclipse.platform.feature.group"
-        versionRange="[4.5.0,4.6.0)"/>
+        name="org.eclipse.platform.feature.group"/>
     <requirement
-        name="org.eclipse.rcp.feature.group"
-        versionRange="[4.5.0,4.6.0)"/>
+        name="org.eclipse.rcp.feature.group"/>
     <requirement
-        name="org.eclipse.jdt.feature.group"
-        versionRange="[3.11.0,3.12.0)"/>
+        name="org.eclipse.jdt.feature.group"/>
     <requirement
-        name="org.eclipse.pde.feature.group"
-        versionRange="[3.11.0,3.12.0)"/>
+        name="org.eclipse.pde.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.rcp.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.recommenders.snipmatch.rcp.feature.feature.group"/>
     <repository
-        url="http://download.eclipse.org/releases/mars/201602261000"/>
+        url="http://download.eclipse.org/releases/neon"/>
     <repository
-        url="http://download.eclipse.org/eclipse/updates/4.5"/>
+        url="http://download.eclipse.org/eclipse/updates/4.6"/>
+    <repository
+        url="http://download.eclipse.org/recommenders/updates/stable/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      label="Tests">
+    <requirement
+        name="org.eclipse.swtbot.generator.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.eclipse.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.gef.spy.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.graphiti.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.help.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.junit.extension.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.logparser.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.rcp.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.recorder.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.spy.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.swt.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.tests.feature.feature.group"/>
+    <requirement
+        name="org.jboss.reddeer.ui.feature.feature.group"/>
+    <repository
+        url="http://download.jboss.org/jbosstools/updates/stable/mars/core/reddeer/1.0.2/"/>
+    <repository
+        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
@@ -212,6 +247,26 @@
           name="org.eclipse.wb.os.linux"
           optional="true"
           filter="(osgi.os=linux)"/>
+      <requirement
+          name="org.jboss.reddeer.eclipse.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.gef.spy.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.graphiti.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.junit.extension.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.logparser.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.rcp.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.recorder.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.spy.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.tests.feature.feature.group"/>
+      <requirement
+          name="org.jboss.reddeer.ui.feature.feature.group"/>
       <sourceLocator
           rootFolder="${git.clone.location}"
           locateNestedProjects="true"/>
@@ -223,6 +278,8 @@
             url="http://download.eclipse.org/cbi/updates/license"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/stable/mars/core/reddeer/1.0.2/"/>
       </repositoryList>
       <repositoryList
           name="Luna">
