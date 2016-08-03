@@ -267,6 +267,12 @@
           name="org.jboss.reddeer.tests.feature.feature.group"/>
       <requirement
           name="org.jboss.reddeer.ui.feature.feature.group"/>
+      <requirement
+          name="org.assertj.core"/>
+      <requirement
+          name="com.tngtech.jgiven.core"/>
+      <requirement
+          name="com.tngtech.jgiven.junit"/>
       <sourceLocator
           rootFolder="${git.clone.location}"
           locateNestedProjects="true"/>
@@ -280,6 +286,8 @@
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
         <repository
             url="http://download.jboss.org/jbosstools/updates/stable/mars/core/reddeer/1.0.2/"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins"/>
       </repositoryList>
       <repositoryList
           name="Luna">
