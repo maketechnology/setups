@@ -77,6 +77,8 @@
     <requirement
         name="org.eclipse.pde.feature.group"/>
     <requirement
+        name="org.eclipse.equinox.weaving.hook"/>
+    <requirement
         name="org.eclipse.recommenders.rcp.feature.feature.group"/>
     <requirement
         name="org.eclipse.recommenders.snipmatch.rcp.feature.feature.group"/>
@@ -87,6 +89,26 @@
     <repository
         url="http://download.eclipse.org/recommenders/updates/stable/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      id="tools"
+      label="Tools">
+    <requirement
+        name="org.eclipse.ajdt.feature.group"/>
+    <requirement
+        name="org.eclipse.contribution.weaving.feature.group"/>
+    <requirement
+        name="org.aspectj.weaver"/>
+    <requirement
+        name="org.eclipse.equinox.weaving.aspectj"/>
+    <requirement
+        name="org.aspectj.runtime"/>
+    <requirement
+        name="org.eclipse.equinox.weaving.hook"/>
+    <repository
+        url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
+    <description></description>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -273,6 +295,14 @@
           name="com.tngtech.jgiven.core"/>
       <requirement
           name="com.tngtech.jgiven.junit"/>
+      <requirement
+          name="org.aspectj.weaver"/>
+      <requirement
+          name="org.eclipse.equinox.weaving.aspectj"/>
+      <requirement
+          name="org.aspectj.runtime"/>
+      <requirement
+          name="org.eclipse.equinox.weaving.hook"/>
       <sourceLocator
           rootFolder="${git.clone.location}"
           locateNestedProjects="true"/>
@@ -285,9 +315,11 @@
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
         <repository
-            url="http://download.jboss.org/jbosstools/updates/stable/mars/core/reddeer/1.0.2/"/>
+            url="http://download.jboss.org/jbosstools/neon/stable/updates/reddeer/1.2.1/"/>
         <repository
             url="http://maketechnology.github.io/p2plugins"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/45/dev/update/ajdt-e45-2.2.4.201604061446"/>
       </repositoryList>
       <repositoryList
           name="Luna">
