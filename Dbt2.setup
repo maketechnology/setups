@@ -209,8 +209,6 @@
     <requirement
         name="org.jboss.reddeer.graphiti.feature.feature.group"/>
     <requirement
-        name="org.jboss.reddeer.help.feature.feature.group"/>
-    <requirement
         name="org.jboss.reddeer.junit.extension.feature.feature.group"/>
     <requirement
         name="org.jboss.reddeer.logparser.feature.feature.group"/>
