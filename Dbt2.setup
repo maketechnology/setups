@@ -95,11 +95,11 @@
       name="gitlab.remoteURIs"
       label="Gitlab repository">
     <choice
-        value="https://@{remoteURI}/gzunino/dbt2.git"
-        label="gzunino HTTPS (with user/pass)"/>
+        value="https://@{remoteURI}/maketechnology/dbt.git"
+        label="HTTPS (with user/pass)"/>
     <choice
-        value="git@@{remoteURI}:gzunino/dbt2.git"
-        label="gzunino GIT SSH (requires pre ssh-keys)"/>
+        value="git@@{remoteURI}:maketechnology/dbt.git"
+        label="GIT SSH (requires pre ssh-keys)"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
