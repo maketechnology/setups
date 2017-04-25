@@ -100,12 +100,18 @@
         name="net.jeeeyul.eclipse.themes.feature.feature.group"/>
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
+    <requirement
+        name="org.eclipse.ajdt.feature.group"/>
+    <requirement
+        name="org.eclipse.contribution.weaving.feature.group"/>
     <repository
         url="http://eclipse.jeeeyul.net/update/"/>
     <repository
         url="http://eclipse-color-theme.github.io/update/"/>
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest"/>
+    <repository
+        url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -269,6 +275,8 @@
       <requirement
           name="org.zeroturnaround.zt-exec"/>
       <requirement
+          name="org.eclipse.pde.runtime"/>
+      <requirement
           name="slf4j.api"/>
       <requirement
           name="org.eclipse.platform.feature.group"/>
@@ -289,8 +297,6 @@
           name="com.verum.dezyne.product"/>
       <requirement
           name="com.verum.dezyne.jre.feature.feature.group"/>
-      <requirement
-          name="com.verum.dezyne.jre.product"/>
       <requirement
           name="com.verum.dezyne.target.plain.project"/>
       <requirement
@@ -313,8 +319,6 @@
           name="io.socket.engine.io-client"/>
       <requirement
           name="com.squareup.okhttp3.okhttp"/>
-      <requirement
-          name="com.squareup.okhttp3.okhttp-ws"/>
       <requirement
           name="com.squareup.okio"/>
       <requirement
@@ -371,6 +375,18 @@
           name="org.eclipse.ecf.core.feature.group"/>
       <requirement
           name="org.apache.commons.compress"/>
+      <requirement
+          name="org.eclipse.epp.mpc.feature.group"/>
+      <requirement
+          name="org.zeroturnaround.zt-process-killer"/>
+      <requirement
+          name="com.sun.jna"/>
+      <requirement
+          name="org.eclipse.equinox.weaving.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.egit.feature.group"/>
+      <requirement
+          name="org.eclipse.egit.ui"/>
       <sourceLocator
           rootFolder="${git.clone.location}">
         <predicate
@@ -407,6 +423,10 @@
             url="http://fappel.github.io/xiliary"/>
         <repository
             url="http://fappel.github.io/test-libraries/"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
+        <repository
+            url="http://download.eclipse.org/egit/updates"/>
       </repositoryList>
       <repositoryList
           name="Mars">
@@ -438,6 +458,10 @@
             url="http://fappel.github.io/xiliary"/>
         <repository
             url="http://fappel.github.io/test-libraries/"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/45/dev/update"/>
+        <repository
+            url="http://download.eclipse.org/egit/updates"/>
       </repositoryList>
       <repositoryList
           name="Luna">
