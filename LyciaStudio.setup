@@ -216,6 +216,58 @@
       <requirement
           name="com.querix.fgl.core"/>
       <requirement
+          name="org.eclipse.egit"/>
+      <requirement
+          name="org.eclipse.egit.core"/>
+      <requirement
+          name="org.eclipse.egit.doc"/>
+      <requirement
+          name="org.eclipse.egit.gitflow.ui"/>
+      <requirement
+          name="org.eclipse.egit.gitflow"/>
+      <requirement
+          name="org.eclipse.egit.ui"/>
+      <requirement
+          name="org.eclipse.mylyn.builds.ui"/>
+      <requirement
+          name="org.eclipse.mylyn.commons.repositories.http.core"/>
+      <requirement
+          name="org.eclipse.mylyn.ide.ui"/>
+      <requirement
+          name="org.eclipse.mylyn.builds.core"/>
+      <requirement
+          name="org.eclipse.mylyn.context.tasks.ui"/>
+      <requirement
+          name="org.eclipse.egit.source.feature.group"/>
+      <requirement
+          name="org.eclipse.mylyn.sdk_feature.feature.group"/>
+      <requirement
+          name="org.eclipse.mylyn.java.tasks"/>
+      <requirement
+          name="org.eclipse.egit.gitflow.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.egit.mylyn.feature.group"/>
+      <requirement
+          name="org.eclipse.egit.feature.group"/>
+      <requirement
+          name="org.eclipse.mylyn.tasks.bugs"/>
+      <requirement
+          name="org.eclipse.egit.import.feature.group"/>
+      <requirement
+          name="org.eclipse.egit.psf.feature.group"/>
+      <requirement
+          name="org.eclipse.mylyn.tasks.core"/>
+      <requirement
+          name="org.eclipse.mylyn.tasks.index.core"/>
+      <requirement
+          name="org.eclipse.mylyn.tasks.index.ui"/>
+      <requirement
+          name="org.eclipse.mylyn.tasks.search"/>
+      <requirement
+          name="org.eclipse.mylyn.tasks.ui"/>
+      <requirement
+          name="org.eclipse.mylyn.wikitext.tasks.ui"/>
+      <requirement
           name="com.querix.fgl.debug.core"/>
       <requirement
           name="com.querix.fgl.debug.ui"/>
@@ -292,9 +344,11 @@
       <requirement
           name="org.assertj.core"/>
       <requirement
-          name="com.tngtech.jgiven.core"/>
+          name="com.tngtech.jgiven.core"
+          versionRange="[0.11.0,0.14.0)"/>
       <requirement
-          name="com.tngtech.jgiven.junit"/>
+          name="com.tngtech.jgiven.junit"
+          versionRange="[0.11.0,0.14.0)"/>
       <requirement
           name="org.aspectj.weaver"/>
       <requirement
