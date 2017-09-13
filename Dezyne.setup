@@ -382,6 +382,8 @@
       <requirement
           name="com.sun.jna"/>
       <requirement
+          name="com.make.cef.feature.feature.group"/>
+      <requirement
           name="org.eclipse.equinox.weaving.sdk.feature.group"/>
       <requirement
           name="org.eclipse.egit.feature.group"/>
@@ -427,6 +429,8 @@
             url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
         <repository
             url="http://download.eclipse.org/egit/updates"/>
+        <repository
+            url="http://maketechpub.gitlab.io/cefswt/repository"/>
       </repositoryList>
       <repositoryList
           name="Mars">
