@@ -24,8 +24,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="Neon"
-      defaultValue="Neon"
+      value="Oxygen"
+      defaultValue="Oxygen"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
@@ -72,7 +72,7 @@
         name="epp.package.rcp"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
-        versionRange="2.7.3"/>
+        versionRange="[2.12.0,2.13.0)"/>
     <requirement
         name="org.eclipse.recommenders.rcp.feature.feature.group"/>
     <requirement
@@ -80,13 +80,13 @@
     <requirement
         name="org.eclipse.recommenders.snipmatch.rcp.feature.feature.group"/>
     <repository
-        url="http://download.eclipse.org/releases/neon"/>
+        url="http://download.eclipse.org/releases/oxygen/"/>
     <repository
-        url="http://download.eclipse.org/eclipse/updates/4.6"/>
+        url="http://download.eclipse.org/eclipse/updates/4.7"/>
     <repository
-        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
+        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20170919201930/repository/"/>
     <repository
-        url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"/>
     <repository
         url="http://download.eclipse.org/recommenders/updates/stable/"/>
   </setupTask>
@@ -111,7 +111,7 @@
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest"/>
     <repository
-        url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
+        url="http://download.eclipse.org/tools/ajdt/47/dev/update"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -132,23 +132,7 @@
       xsi:type="setup.p2:P2Task"
       label="Test Plugins">
     <requirement
-        name="org.eclipse.rcptt.platform.feature.group"/>
-    <requirement
-        name="org.eclipse.jdt.junit.runners.feature.feature.group"/>
-    <requirement
         name="org.eclipse.pde.junit.runtime"/>
-    <requirement
-        name="org.jnario.m2e.feature.group"
-        versionRange="[1.1.0,2.0.0)"/>
-    <requirement
-        name="org.jnario.sdk.feature.group"
-        versionRange="[1.1.0,2.0.0)"/>
-    <repository
-        url="http://download.eclipse.org/rcptt/release/2.1.0/repository"/>
-    <repository
-        url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
-    <repository
-        url="http://www.jnario.org/updates/snapshot"/>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
@@ -286,7 +270,7 @@
           name="org.eclipse.equinox.executable.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.9.0,2.10.0)"/>
+          versionRange="[2.12.0,2.13.0)"/>
       <requirement
           name="com.verum.dezyne.ide.feature.feature.group"/>
       <requirement
@@ -304,15 +288,13 @@
       <requirement
           name="com.verum.dezyne.client.tests"/>
       <requirement
+          name="com.verum.dezyne.asd.inttests"/>
+      <requirement
           name="com.verum.dezyne.ui.operations.tests"/>
       <requirement
           name="com.verum.dezyne.product.tests"/>
       <requirement
           name="com.verum.dezyne.ui.rcptests.plain.project"/>
-      <requirement
-          name="com.codeaffine.console.core.pdetest"/>
-      <requirement
-          name="com.codeaffine.gonsole.test.util"/>
       <requirement
           name="io.socket.io-client"/>
       <requirement
@@ -324,8 +306,6 @@
       <requirement
           name="org.json"/>
       <requirement
-          name="org.eclipse.fx.osgi"/>
-      <requirement
           name="org.dom4j"/>
       <requirement
           name="org.apache.commons.io"/>
@@ -336,23 +316,7 @@
       <requirement
           name="com.google.gson"/>
       <requirement
-          name="org.jnario.lib"
-          versionRange="[1.1.0,2.0.0)"/>
-      <requirement
-          name="org.eclipse.jdt.junit.runners.feature.feature.group"/>
-      <requirement
           name="org.eclipse.pde.junit.runtime"/>
-      <requirement
-          name="org.mozilla.javascript"
-          versionRange="[1.7.4,2.0.0)"/>
-      <requirement
-          name="org.eclipse.swtbot.forms.feature.group"/>
-      <requirement
-          name="org.eclipse.swtbot.eclipse.feature.group"/>
-      <requirement
-          name="org.eclipse.swtbot.feature.group"/>
-      <requirement
-          name="org.eclipse.swtbot.go"/>
       <requirement
           name="org.apache.log4j"/>
       <requirement
@@ -363,8 +327,6 @@
           name="org.eclipse.nebula.widgets.paperclips.feature.feature.group"/>
       <requirement
           name="org.assertj.core"/>
-      <requirement
-          name="org.jboss.tools.locus.mockito"/>
       <requirement
           name="com.github.eclipsecolortheme.feature.feature.group"/>
       <requirement
@@ -389,12 +351,37 @@
           name="org.eclipse.egit.feature.group"/>
       <requirement
           name="org.eclipse.egit.ui"/>
+      <requirement
+          name="com.google.guava"/>
       <sourceLocator
           rootFolder="${git.clone.location}">
         <predicate
             xsi:type="predicates:NamePredicate"
             pattern=".*"/>
       </sourceLocator>
+      <repositoryList
+          name="Oxygen">
+        <repository
+            url="http://download.eclipse.org/releases/oxygen/"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20170919201930/repository/"/>
+        <repository
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"/>
+        <repository
+            url="http://download.eclipse.org/nebula/releases/1.4.0"/>
+        <repository
+            url="http://eclipse-color-theme.github.io/update/"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins/"/>
+        <repository
+            url="http://fappel.github.io/xiliary"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/47/dev/update"/>
+        <repository
+            url="http://download.eclipse.org/egit/updates"/>
+        <repository
+            url="http://maketechpub.gitlab.io/cefswt/repository"/>
+      </repositoryList>
       <repositoryList
           name="Neon">
         <repository
@@ -406,8 +393,6 @@
         <repository
             url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
         <repository
-            url="http://www.jnario.org/updates/snapshot"/>
-        <repository
             url="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite"/>
         <repository
             url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
@@ -416,21 +401,17 @@
         <repository
             url="http://download.eclipse.org/nebula/snapshot/"/>
         <repository
-            url="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/1.5.0-SNAPSHOT/update.site-1.5.0-SNAPSHOT.zip-unzip/"/>
-        <repository
             url="http://eclipse-color-theme.github.io/update/"/>
         <repository
             url="http://maketechnology.github.io/p2plugins/"/>
-        <repository
-            url="http://fappel.github.io/xiliary"/>
-        <repository
-            url="http://fappel.github.io/test-libraries/"/>
         <repository
             url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
         <repository
             url="http://download.eclipse.org/egit/updates"/>
         <repository
             url="http://maketechpub.gitlab.io/cefswt/repository"/>
+        <repository
+            url="http://fappel.github.io/xiliary/0.2"/>
       </repositoryList>
       <repositoryList
           name="Mars">
@@ -504,7 +485,7 @@
   </setupTask>
   <setupTask
       xsi:type="launching:LaunchTask"
-      id="xtext mwe"
+      id="xtext.mwe"
       launcher="/com.verum.dezyne.asd/.launch/Generate Language Infrastructure (com.verum.dezyne.asd).launch">
     <description>Generates Xtext code</description>
   </setupTask>
