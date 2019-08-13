@@ -24,8 +24,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="Oxygen"
-      defaultValue="Oxygen"
+      value="Photon"
+      defaultValue="Photon"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
@@ -72,7 +72,7 @@
         name="epp.package.rcp"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
-        versionRange="[2.12.0,2.13.0)"/>
+        versionRange="[2.15.0,2.16.0)"/>
     <requirement
         name="org.eclipse.recommenders.rcp.feature.feature.group"/>
     <requirement
@@ -86,7 +86,7 @@
     <repository
         url="http://download.eclipse.org/tools/orbit/downloads/drops/R20170919201930/repository/"/>
     <repository
-        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"/>
+        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0"/>
     <repository
         url="http://download.eclipse.org/recommenders/updates/stable/"/>
   </setupTask>
@@ -104,14 +104,18 @@
         name="org.eclipse.ajdt.feature.group"/>
     <requirement
         name="org.eclipse.contribution.weaving.feature.group"/>
+    <requirement
+        name="org.dadacoalition.yedit.feature.feature.group"/>
     <repository
         url="http://eclipse.jeeeyul.net/update/"/>
     <repository
         url="http://eclipse-color-theme.github.io/update/"/>
     <repository
-        url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest"/>
+        url="https://dl.bintray.com/mbarbero/fr.obeo.releng.targetplatform/latest/"/>
     <repository
         url="http://download.eclipse.org/tools/ajdt/47/dev/update"/>
+    <repository
+        url="http://dadacoalition.org/yedit"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -270,7 +274,7 @@
           name="org.eclipse.equinox.executable.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.12.0,2.13.0)"/>
+          versionRange="[2.15.0,2.16.0)"/>
       <requirement
           name="com.verum.dezyne.ide.feature.feature.group"/>
       <requirement
@@ -295,10 +299,6 @@
           name="com.verum.dezyne.product.tests"/>
       <requirement
           name="com.verum.dezyne.ui.rcptests.plain.project"/>
-      <requirement
-          name="io.socket.io-client"/>
-      <requirement
-          name="io.socket.engine.io-client"/>
       <requirement
           name="com.squareup.okhttp3.okhttp"/>
       <requirement
@@ -344,7 +344,9 @@
       <requirement
           name="com.sun.jna"/>
       <requirement
-          name="com.make.cef.feature.feature.group"/>
+          name="org.eclipse.swt.chromium.feature.feature.group"/>
+      <requirement
+          name="com.make.chromium.cef.feature.feature.group"/>
       <requirement
           name="org.eclipse.equinox.weaving.sdk.feature.group"/>
       <requirement
@@ -360,13 +362,38 @@
             pattern=".*"/>
       </sourceLocator>
       <repositoryList
+          name="Photon">
+        <repository
+            url="http://download.eclipse.org/releases/photon/"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository/"/>
+        <repository
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0"/>
+        <repository
+            url="http://download.eclipse.org/nebula/releases/2.1.0/"/>
+        <repository
+            url="http://eclipse-color-theme.github.io/update/"/>
+        <repository
+            url="http://maketechnology.github.io/p2plugins/"/>
+        <repository
+            url="http://fappel.github.io/xiliary"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/48/dev/update/"/>
+        <repository
+            url="http://download.eclipse.org/egit/updates-5.2/"/>
+        <repository
+            url="http://dl.maketechnology.io/chromium-swt/rls/repository"/>
+        <repository
+            url="http://dl.maketechnology.io/chromium-cef/rls/repository"/>
+      </repositoryList>
+      <repositoryList
           name="Oxygen">
         <repository
             url="http://download.eclipse.org/releases/oxygen/"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20170919201930/repository/"/>
         <repository
-            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"/>
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
         <repository
             url="http://download.eclipse.org/nebula/releases/1.4.0"/>
         <repository
@@ -378,7 +405,7 @@
         <repository
             url="http://download.eclipse.org/tools/ajdt/47/dev/update"/>
         <repository
-            url="http://download.eclipse.org/egit/updates"/>
+            url="http://download.eclipse.org/egit/updates-4.11"/>
         <repository
             url="http://maketechpub.gitlab.io/cefswt/repository"/>
       </repositoryList>
@@ -407,7 +434,7 @@
         <repository
             url="http://download.eclipse.org/tools/ajdt/46/dev/update"/>
         <repository
-            url="http://download.eclipse.org/egit/updates"/>
+            url="http://download.eclipse.org/egit/updates-4.11"/>
         <repository
             url="http://maketechpub.gitlab.io/cefswt/repository"/>
         <repository
@@ -446,7 +473,7 @@
         <repository
             url="http://download.eclipse.org/tools/ajdt/45/dev/update"/>
         <repository
-            url="http://download.eclipse.org/egit/updates"/>
+            url="http://download.eclipse.org/egit/updates-4.11"/>
       </repositoryList>
       <repositoryList
           name="Luna">
